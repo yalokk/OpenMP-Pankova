@@ -12,7 +12,7 @@ int main()
     int i, j, k;
     double start_time, end_time;
 
-    // Создаем матрицы
+    // Fill matrices with random values
     double** A = new double* [N];
     double** B = new double* [N];
     double** C = new double* [N];
@@ -23,7 +23,7 @@ int main()
         C[i] = new double[N];
     }
 
-    // Заполняем матрицы случайными значениями
+    // Matrix multiplication using OpenMP
     srand(time(NULL));
     for (i = 0; i < N; ++i)
     {
@@ -35,7 +35,7 @@ int main()
         }
     }
 
-    // Умножаем матрицы с помощью OpenMP
+    // Г“Г¬Г­Г®Г¦Г ГҐГ¬ Г¬Г ГІГ°ГЁГ¶Г» Г± ГЇГ®Г¬Г®Г№ГјГѕ OpenMP
     start_time = omp_get_wtime();
 #pragma omp parallel for private(i,j,k)
     for (i = 0; i < N; ++i)
@@ -50,7 +50,7 @@ int main()
     }
     end_time = omp_get_wtime();
 
-    // Выводим время выполнения
+    // Output the execution time
     cout << "Matrix multiplication with OpenMP completed in " << end_time - start_time << " seconds." << endl;
 
     for (i = 0; i < N; ++i)
