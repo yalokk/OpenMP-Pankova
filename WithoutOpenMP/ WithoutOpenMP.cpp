@@ -9,7 +9,6 @@ int main() {
 
     int i, j, k;
 
-    // Создаем матрицы
     double** A = new double* [N];
     double** B = new double* [N];
     double** C = new double* [N];
@@ -20,7 +19,7 @@ int main() {
         C[i] = new double[N];
     }
 
-    // Заполняем матрицы случайными значениями
+   // Fill matrices with random values
     srand(time(NULL));
     for (i = 0; i < N; ++i)
     {
@@ -32,7 +31,7 @@ int main() {
         }
     }
 
-    // Перемножаем матрицы
+    // Matrix multiplication
     auto start_time = chrono::high_resolution_clock::now();
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -44,7 +43,7 @@ int main() {
     }
     auto end_time = chrono::high_resolution_clock::now();
 
-    // Выводим время выполнения
+    // Output the execution time
     auto execution_time = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
     cout << "Matrix multiplication without OpenMP completed in : " << execution_time.count() << " microseconds" << endl;
 
